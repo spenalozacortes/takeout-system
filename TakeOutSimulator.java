@@ -30,4 +30,21 @@ public class TakeOutSimulator {
       }
     }
   }
+
+  public boolean shouldSimulate() {
+    String userPrompt = "Enter 1 to CONTINUE simulation or 0 to EXIT program: ";
+
+    IntUserInputRetriever<Boolean> userInputRetriever = selection -> {
+      if (selection == 1 && customer.getMoney() >= menu.getLowestCostFood().getPrice()) {
+        return true;
+      } else if (selection == 0) {
+        System.out.println("Thank you for eating with us! See you soon!");
+        return false;
+      } else {
+        throw new IllegalArgumentException();
+      }
+    };
+
+    return this.getOutputOnIntInput(userPrompt, userInputRetriever);
+  }
 }
