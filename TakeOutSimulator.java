@@ -79,4 +79,12 @@ public class TakeOutSimulator {
 
     return this.getOutputOnIntInput(userPrompt, userInputRetriever);
   }
+
+  public void checkoutCustomer(ShoppingBag<Food> shoppingBag) {
+    System.out.println("Processing payment...");
+    int remainingMoney = customer.getMoney() - shoppingBag.getTotalPrice();
+    customer.setMoney(remainingMoney);
+    System.out.println("Your remaining money: " + remainingMoney);
+    System.out.println("Thank you and enjoy your food!");
+  }
 }
