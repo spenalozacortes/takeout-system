@@ -87,4 +87,25 @@ public class TakeOutSimulator {
     System.out.println("Your remaining money: " + remainingMoney);
     System.out.println("Thank you and enjoy your food!");
   }
+
+  public void takeOutPrompt() {
+    ShoppingBag<Food> shoppingBag = new ShoppingBag<>();
+    int customerMoneyLeft = customer.getMoney();
+    boolean stillOrdering = true;
+
+    while(stillOrdering) {
+      System.out.println("You have " + customerMoneyLeft + " left to spend");
+      Food food = this.getMenuSelection();
+      if (customerMoneyLeft >= food.getPrice()) {
+        customerMoneyLeft -= food.getPrice();
+        shoppingBag.addItem(food);
+      } else {
+        System.out.println("Oops! Looks like you don't have enough for that. Choose another item or checkout.");
+      }
+      stillOrdering = this.isStillOrderingFood();
+      if (stillOrdering == false) {
+        this.checkoutCustomer(shoppingBag);
+      }
+    }
+  }
 }
