@@ -47,4 +47,20 @@ public class TakeOutSimulator {
 
     return this.getOutputOnIntInput(userPrompt, userInputRetriever);
   }
+
+  public Food getMenuSelection() {
+    System.out.println("Today's Menu Options!");
+    System.out.println(menu);
+    String userPrompt = "Your choice (enter the corresponding number): ";
+
+    IntUserInputRetriever<Food> userInputRetriever = selection -> {
+      if (menu.getFood(selection) != null) {
+        return menu.getFood(selection);
+      } else {
+        throw new IllegalArgumentException();
+      }
+    };
+
+    return this.getOutputOnIntInput(userPrompt, userInputRetriever);
+  }
 }
