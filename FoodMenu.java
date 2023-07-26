@@ -22,4 +22,12 @@ public class FoodMenu {
     }
     return srt;
   }
+
+  public Food getFood(int index) {
+    try {
+      return menu.get(index - 1);
+    } catch(IndexOutOfBoundsException e) {
+      return null;
+    }
+  }
 }
