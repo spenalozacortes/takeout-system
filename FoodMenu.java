@@ -30,4 +30,14 @@ public class FoodMenu {
       return null;
     }
   }
+
+  public Food getLowestCostFood() {
+    Food minFood = menu.get(0);
+    for (Food food: menu) {
+      if (food.getPrice() < minFood.getPrice()) {
+        minFood = food;
+      }
+    }
+    return minFood;
+  }
 }
