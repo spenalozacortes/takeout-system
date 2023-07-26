@@ -12,4 +12,14 @@ public class FoodMenu {
     menu.add(new Food("Pozole", "Best", 20));
     menu.add(new Food("Enchiladas", "Best", 15));
   }
+
+  // Methods
+  @Override
+  public String toString() {
+    String srt = "";
+    for (int i = 0; i < menu.size(); i++) {
+      srt += i+1 + ". " + menu.get(i).toString() + "\n";
+    }
+    return srt;
+  }
 }
